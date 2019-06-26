@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/mobile_navigation">
+            xmlns:tools="http://schemas.android.com/tools" android:id="@+id/mobile_navigation"
+            app:startDestination="@id/splashFragment">
 
+    <fragment android:id="@+id/splashFragment" android:name="com.rohitrj.notesapp.ui.splash.SplashFragment"
+              android:label="splash_fragment" tools:layout="@layout/splash_fragment">
+        <action android:id="@+id/nextAction" app:destination="@id/allNotesFragment"
+        />
+    </fragment>
+    <fragment android:id="@+id/addNoteFragment" android:name="com.rohitrj.notesapp.ui.notes.addnotes.AddNoteFragment"
+              android:label="add_note_fragment" tools:layout="@layout/add_note_fragment"/>
+    <fragment android:id="@+id/allNotesFragment" android:name="com.rohitrj.notesapp.ui.notes.allnotes.AllNotesFragment"
+              android:label="all_notes_fragment" tools:layout="@layout/all_notes_fragment"/>
 </navigation>
