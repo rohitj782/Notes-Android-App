@@ -6,11 +6,19 @@
 
     <fragment android:id="@+id/splashFragment" android:name="com.rohitrj.notesapp.ui.splash.SplashFragment"
               android:label="splash_fragment" tools:layout="@layout/splash_fragment">
-        <action android:id="@+id/nextAction" app:destination="@id/allNotesFragment"
-        />
+        <action android:id="@+id/nextAction" app:destination="@+id/allNotesFragment"
+                app:popUpTo="@+id/splashFragment"
+                app:popUpToInclusive="true" app:launchSingleTop="true"/>
     </fragment>
-    <fragment android:id="@+id/addNoteFragment" android:name="com.rohitrj.notesapp.ui.notes.addnotes.AddNoteFragment"
-              android:label="add_note_fragment" tools:layout="@layout/add_note_fragment"/>
+    <fragment android:id="@+id/addNoteFragment"
+              android:name="com.rohitrj.notesapp.ui.notes.addnotes.AddNoteFragment"
+              android:label="Create a new note" tools:layout="@layout/add_note_fragment">
+        <action android:id="@+id/nextAction" app:destination="@id/allNotesFragment"
+                app:launchSingleTop="true"/>
+    </fragment>
     <fragment android:id="@+id/allNotesFragment" android:name="com.rohitrj.notesapp.ui.notes.allnotes.AllNotesFragment"
-              android:label="all_notes_fragment" tools:layout="@layout/all_notes_fragment"/>
+              tools:layout="@layout/all_notes_fragment" android:label="My Notes">
+        <action android:id="@+id/nextAction" app:destination="@id/addNoteFragment"
+                app:launchSingleTop="true"/>
+    </fragment>
 </navigation>

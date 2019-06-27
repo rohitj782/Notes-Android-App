@@ -23,8 +23,9 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this,navController)
     }
 
-    //handle back track of action bar.
+        //handle back track of action bar.
         override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController,null)
+
     }
 }

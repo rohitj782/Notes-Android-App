@@ -10,6 +10,7 @@
                                                         android:layout_height="wrap_content"
                                                         android:background="@color/colorPrimary"
                                                         android:id="@+id/materialToolbar"
+                                                        app:popupTheme="@anim/nav_default_pop_enter_anim"
                                                         app:layout_constraintEnd_toEndOf="parent"
                                                         app:layout_constraintBottom_toTopOf="@+id/nav_host_fragment"
                                                         app:layout_constraintTop_toTopOf="parent"

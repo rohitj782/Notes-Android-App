@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 
 import com.rohitrj.notesapp.R
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.add_note_fragment.*
 
 class AddNoteFragment : Fragment() {
 
@@ -28,6 +31,18 @@ class AddNoteFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(AddNoteViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        activity!!.materialToolbar.visibility = View.VISIBLE
+
+        floatingActionButtonSave.setOnClickListener {
+
+            Navigation.findNavController(view).navigate(AddNoteFragmentDirections.nextAction())
+
+        }
+
     }
 
 }

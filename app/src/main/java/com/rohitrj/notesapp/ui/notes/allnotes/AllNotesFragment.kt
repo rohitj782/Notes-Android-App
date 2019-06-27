@@ -7,7 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import com.rohitrj.notesapp.R
+import kotlinx.android.synthetic.main.activity_main.*
+import androidx.appcompat.app.ActionBar
+import androidx.navigation.Navigation
+import kotlinx.android.synthetic.main.all_notes_fragment.*
+
 
 class AllNotesFragment : Fragment() {
 
@@ -21,13 +25,23 @@ class AllNotesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.all_notes_fragment, container, false)
+        return inflater.inflate(com.rohitrj.notesapp.R.layout.all_notes_fragment, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(AllNotesViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        activity!!.materialToolbar.visibility = View.GONE
+
+        floatingActionButtonAdd.setOnClickListener {
+            Navigation.findNavController(view).navigate(AllNotesFragmentDirections.nextAction())
+        }
+
     }
 
 }
