@@ -12,10 +12,7 @@
     </fragment>
     <fragment android:id="@+id/addNoteFragment"
               android:name="com.rohitrj.notesapp.ui.notes.addnotes.AddNoteFragment"
-              android:label="Create a new note" tools:layout="@layout/add_note_fragment">
-        <action android:id="@+id/nextAction" app:destination="@id/allNotesFragment"
-                app:launchSingleTop="true"/>
-    </fragment>
+              android:label="Create a new note" tools:layout="@layout/add_note_fragment"/>
     <fragment android:id="@+id/allNotesFragment" android:name="com.rohitrj.notesapp.ui.notes.allnotes.AllNotesFragment"
               tools:layout="@layout/all_notes_fragment" android:label="My Notes">
         <action android:id="@+id/nextAction" app:destination="@id/addNoteFragment"

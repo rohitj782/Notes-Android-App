@@ -38,9 +38,7 @@ class AddNoteFragment : Fragment() {
         activity!!.materialToolbar.visibility = View.VISIBLE
 
         floatingActionButtonSave.setOnClickListener {
-
-            Navigation.findNavController(view).navigate(AddNoteFragmentDirections.nextAction())
-
+            activity!!.onBackPressed()
         }
 
     }
