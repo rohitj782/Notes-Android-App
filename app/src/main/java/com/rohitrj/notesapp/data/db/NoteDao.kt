@@ -11,7 +11,7 @@ interface NoteDao {
     @Insert
     suspend fun addNote(note: Note)
 
-    @Query("Select * from Note")
+    @Query("Select * from Note order by id desc")
     suspend fun getAllNotes() : List < Note >
 
 }
