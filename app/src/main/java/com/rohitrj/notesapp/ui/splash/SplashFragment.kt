@@ -13,12 +13,13 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 
 import com.rohitrj.notesapp.R
+import com.rohitrj.notesapp.ui.basefragment.BaseFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.coroutines.*
 import java.lang.Runnable
 
-class SplashFragment : Fragment() {
+class SplashFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = SplashFragment()
@@ -36,19 +37,15 @@ class SplashFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         activity!!.materialToolbar.visibility = View.GONE
-
-        Handler().postDelayed({
+        launch {
+            delay(2000)
             Navigation.findNavController(view).navigate(SplashFragmentDirections.nextAction())
-        },2000)
-
+        }
     }
 
 }

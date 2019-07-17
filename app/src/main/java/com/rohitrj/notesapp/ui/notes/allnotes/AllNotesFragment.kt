@@ -10,10 +10,11 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_main.*
 import androidx.appcompat.app.ActionBar
 import androidx.navigation.Navigation
+import com.rohitrj.notesapp.ui.basefragment.BaseFragment
 import kotlinx.android.synthetic.main.all_notes_fragment.*
 
 
-class AllNotesFragment : Fragment() {
+class AllNotesFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = AllNotesFragment()

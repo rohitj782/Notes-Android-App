@@ -9,9 +9,9 @@ import com.rohitrj.notesapp.data.entity.Note
 interface NoteDao {
 
     @Insert
-    fun addNote(note: Note)
+    suspend fun addNote(note: Note)
 
     @Query("Select * from Note")
-    fun getAllNotes() : List < Note >
+    suspend fun getAllNotes() : List < Note >
 
 }

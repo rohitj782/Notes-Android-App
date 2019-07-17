@@ -2,9 +2,29 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent"
         tools:context=".ui.notes.allnotes.AllNotesFragment">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:layout_marginBottom="55dp"
+                  android:orientation="vertical">
+        <EditText android:layout_width="match_parent"
+                  android:layout_height="55dp"
+                  android:layout_marginTop="10dp"
+                  android:padding="10dp"
+                  android:id="@+id/editTextTitle"
+                  android:hint="@string/enter_title"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:gravity="start|top"
+                android:ems="10"
+                android:hint="@string/write_something"
+                android:id="@+id/editTextNote"/>
+
+    </LinearLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar android:layout_width="match_parent"
                                                            android:layout_gravity="bottom"
