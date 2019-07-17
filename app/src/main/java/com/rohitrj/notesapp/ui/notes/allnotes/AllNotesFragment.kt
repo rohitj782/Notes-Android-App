@@ -39,14 +39,6 @@ class AllNotesFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(AllNotesViewModel::class.java)
 
-        recyclerView.setHasFixedSize(true)
-        val layout = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
-        recyclerView.layoutManager = layout
-        launch {
-            val notes = NoteDatabase(context!!).getNoteDao().getAllNotes()
-            recyclerView.adapter = NoteAdapter(notes)
-        }
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -61,7 +53,15 @@ class AllNotesFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        onActivityCreated(null)
+
+        recyclerView.setHasFixedSize(true)
+        val layout = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+        recyclerView.layoutManager = layout
+        launch {
+            val notes = NoteDatabase(context!!).getNoteDao().getAllNotes()
+            recyclerView.adapter = NoteAdapter(notes)
+        }
+
     }
 
 }
