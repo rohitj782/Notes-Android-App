@@ -15,7 +15,17 @@
               android:label="Create a new note" tools:layout="@layout/add_note_fragment"/>
     <fragment android:id="@+id/allNotesFragment" android:name="com.rohitrj.notesapp.ui.notes.allnotes.AllNotesFragment"
               tools:layout="@layout/all_notes_fragment" android:label="My Notes">
-        <action android:id="@+id/nextAction" app:destination="@id/addNoteFragment"
-                app:launchSingleTop="true"/>
+        <action app:destination="@id/addNoteFragment"
+                app:launchSingleTop="true" android:id="@+id/addNote"/>
+        <action android:id="@+id/updateNote"
+                app:destination="@id/updateNoteFragment"/>
+    </fragment>
+    <fragment android:id="@+id/updateNoteFragment"
+              android:name="com.rohitrj.notesapp.ui.notes.updatenotes.UpdateNoteFragment"
+              tools:layout="@layout/update_note_fragment">
+        <argument
+                app:nullable="true"
+                app:argType="com.rohitrj.notesapp.data.entity.Note"
+                android:name="note"/>
     </fragment>
 </navigation>

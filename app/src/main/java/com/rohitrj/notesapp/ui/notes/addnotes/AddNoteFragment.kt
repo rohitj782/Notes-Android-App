@@ -1,19 +1,16 @@
 package com.rohitrj.notesapp.ui.notes.addnotes
 
-import android.os.BaseBundle
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.navigation.Navigation
 
 import com.rohitrj.notesapp.R
 import com.rohitrj.notesapp.data.db.NoteDatabase
 import com.rohitrj.notesapp.data.entity.Note
 import com.rohitrj.notesapp.ui.basefragment.BaseFragment
+import com.rohitrj.notesapp.internals.utlity.toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_note_fragment.*
 import kotlinx.coroutines.launch
@@ -51,7 +48,7 @@ class AddNoteFragment : BaseFragment() {
             //launching a coroutine
             launch {
                 NoteDatabase(context!!).getNoteDao().addNote(newNote)
-                Toast.makeText(context!!,"Saved",Toast.LENGTH_SHORT).show()
+                context!!.toast("saved")
             }
             activity!!.onBackPressed()
         }

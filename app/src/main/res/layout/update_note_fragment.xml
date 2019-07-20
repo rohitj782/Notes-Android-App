@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.notes.updatenotes.UpdateNoteFragment">
+
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+    android:layout_marginBottom="55dp">
+
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:gravity="start|top"
+                android:ems="10"
+                android:id="@+id/editTextDisplayNote" android:layout_marginTop="16dp"
+                android:lineSpacingMultiplier="1.3" android:textSize="18sp" android:textStyle="italic"
+                />
+    </LinearLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar android:layout_width="match_parent"
+                                                           android:layout_gravity="bottom"
+                                                           android:backgroundTint="@color/colorPrimary"
+                                                           android:id="@+id/bottom_app_bar_2"
+                                                           app:fabAlignmentMode="end"
+                                                           android:layout_height="wrap_content"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton android:layout_width="wrap_content"
+                                                                           android:src="@drawable/ic_save_black_24dp"
+                                                                           android:tint="@android:color/white"
+                                                                           android:layout_height="wrap_content"
+                                                                           app:layout_anchor="@id/bottom_app_bar_2"
+                                                                           android:id="@+id/floatingActionButtonUpdate"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+

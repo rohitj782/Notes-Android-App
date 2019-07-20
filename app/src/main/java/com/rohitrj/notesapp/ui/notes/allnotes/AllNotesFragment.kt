@@ -1,20 +1,16 @@
 package com.rohitrj.notesapp.ui.notes.allnotes
 
-import android.icu.lang.UCharacter
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
 import kotlinx.android.synthetic.main.activity_main.*
-import androidx.appcompat.app.ActionBar
 import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.rohitrj.notesapp.data.db.NoteDatabase
-import com.rohitrj.notesapp.internals.NoteAdapter
+import com.rohitrj.notesapp.internals.adapters.NoteAdapter
 import com.rohitrj.notesapp.ui.basefragment.BaseFragment
 import kotlinx.android.synthetic.main.all_notes_fragment.*
 import kotlinx.coroutines.launch
@@ -46,14 +42,13 @@ class AllNotesFragment : BaseFragment() {
         activity!!.materialToolbar.visibility = View.GONE
 
         floatingActionButtonAdd.setOnClickListener {
-            Navigation.findNavController(view).navigate(AllNotesFragmentDirections.nextAction())
+            Navigation.findNavController(view).navigate(AllNotesFragmentDirections.addNote())
         }
 
     }
 
     override fun onResume() {
         super.onResume()
-
         recyclerView.setHasFixedSize(true)
         val layout = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
         recyclerView.layoutManager = layout

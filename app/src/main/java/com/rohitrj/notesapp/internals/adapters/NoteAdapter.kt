@@ -1,13 +1,15 @@
-package com.rohitrj.notesapp.internals
+package com.rohitrj.notesapp.internals.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.RecyclerView
 import com.rohitrj.notesapp.R
 import com.rohitrj.notesapp.data.entity.Note
+import com.rohitrj.notesapp.ui.notes.allnotes.AllNotesFragmentDirections
 import kotlinx.android.synthetic.main.note_display.view.*
-import java.util.zip.Inflater
 
 class NoteAdapter(noteList: List<Note>) : RecyclerView.Adapter<NoteAdapter.MyViewHolder>() {
 
@@ -25,6 +27,10 @@ class NoteAdapter(noteList: List<Note>) : RecyclerView.Adapter<NoteAdapter.MyVie
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         holder.seeDetails(list[position])
+        holder.view.setOnClickListener {
+            val action = AllNotesFragmentDirections.updateNote(list[position])
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     inner class MyViewHolder(val view: View): RecyclerView.ViewHolder(view){

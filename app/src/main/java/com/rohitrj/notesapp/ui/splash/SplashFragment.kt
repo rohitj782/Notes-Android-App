@@ -47,5 +47,4 @@ class SplashFragment : BaseFragment() {
             Navigation.findNavController(view).navigate(SplashFragmentDirections.nextAction())
         }
     }
-
 }
