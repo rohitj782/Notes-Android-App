@@ -11,7 +11,7 @@
                   android:orientation="vertical">
         <EditText android:layout_width="match_parent"
                   android:layout_height="55dp"
-                  android:layout_marginTop="10dp"
+                  android:layout_margin="10dp"
                   android:padding="10dp"
                   android:id="@+id/editTextTitle"
                   android:hint="@string/enter_title"/>
@@ -21,6 +21,7 @@
                 android:inputType="textMultiLine"
                 android:gravity="start|top"
                 android:ems="10"
+                android:layout_margin="10dp"
                 android:hint="@string/write_something"
                 android:id="@+id/editTextNote"/>
 
@@ -28,7 +29,7 @@
 
     <com.google.android.material.bottomappbar.BottomAppBar android:layout_width="match_parent"
                                                            android:layout_gravity="bottom"
-                                                           android:backgroundTint="@color/colorPrimary"
+                                                           android:backgroundTint="@color/colorPrimaryDark"
                                                            android:id="@+id/bottom_app_bar_2"
                                                            app:fabAlignmentMode="end"
                                                            android:layout_height="wrap_content"/>

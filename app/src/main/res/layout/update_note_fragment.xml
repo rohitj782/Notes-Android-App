@@ -16,6 +16,7 @@
                 android:inputType="textMultiLine"
                 android:gravity="start|top"
                 android:ems="10"
+                android:layout_margin="10dp"
                 android:id="@+id/editTextDisplayNote" android:layout_marginTop="16dp"
                 android:lineSpacingMultiplier="1.3" android:textSize="18sp" android:textStyle="italic"
                 />
@@ -23,7 +24,7 @@
 
     <com.google.android.material.bottomappbar.BottomAppBar android:layout_width="match_parent"
                                                            android:layout_gravity="bottom"
-                                                           android:backgroundTint="@color/colorPrimary"
+                                                           android:backgroundTint="@color/colorPrimaryDark"
                                                            android:id="@+id/bottom_app_bar_2"
                                                            app:fabAlignmentMode="end"
                                                            android:layout_height="wrap_content"/>

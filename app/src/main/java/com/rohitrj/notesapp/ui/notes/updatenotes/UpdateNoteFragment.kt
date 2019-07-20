@@ -51,6 +51,7 @@ class UpdateNoteFragment : BaseFragment() {
             note = UpdateNoteFragmentArgs.fromBundle(it).note
             activity!!.materialToolbar.title = note?.title
             editTextDisplayNote.setText(note?.note)
+            editTextDisplayNote.setSelection(0)
         }
 
         floatingActionButtonUpdate.setOnClickListener {

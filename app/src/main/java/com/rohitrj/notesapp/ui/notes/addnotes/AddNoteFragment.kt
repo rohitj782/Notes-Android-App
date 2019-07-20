@@ -43,6 +43,17 @@ class AddNoteFragment : BaseFragment() {
             val title = editTextTitle.text.toString()
             val note = editTextNote.text.toString()
 
+            if(title.isEmpty()){
+                editTextTitle.setError("Title required...")
+                editTextTitle.requestFocus()
+                return@setOnClickListener
+            }
+            if(note.isEmpty()){
+                editTextNote.error = "Write something..."
+                editTextNote.requestFocus()
+                return@setOnClickListener
+            }
+
             val newNote = Note(title, note)
 
             //launching a coroutine
