@@ -1,5 +1,6 @@
 package com.rohitrj.notesapp.ui.notes.updatenotes
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Base64
@@ -22,6 +23,8 @@ import com.rohitrj.notesapp.ui.notes.addnotes.AddNoteFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.update_note_fragment.*
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 class UpdateNoteFragment : BaseFragment() {
 
@@ -59,11 +62,20 @@ class UpdateNoteFragment : BaseFragment() {
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun deleteAndUpdate() {
         launch {
             note?.let {
                 NoteDatabase(activity!!).getNoteDao().deleteNote(it)
-                val newNote = Note(activity!!.materialToolbar.title.toString(),editTextDisplayNote.text.toString())
+
+                val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+                val currentDate = sdf.format(Date())
+
+                val newNote = Note(
+                    activity!!.materialToolbar.title.toString(),
+                    editTextDisplayNote.text.toString(),
+                    currentDate )
+
                 NoteDatabase(activity!!).getNoteDao().addNote(newNote)
                 activity!!.toast("Updated")
                 activity!!.onBackPressed()

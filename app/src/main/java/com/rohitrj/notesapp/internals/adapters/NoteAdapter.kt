@@ -38,6 +38,7 @@ class NoteAdapter(noteList: List<Note>) : RecyclerView.Adapter<NoteAdapter.MyVie
         fun seeDetails(note: Note){
             view.textViewNote.text = note.note
             view.textViewTitle.text = note.title
+            view.textViewDate.text = note.date
         }
     }
 }

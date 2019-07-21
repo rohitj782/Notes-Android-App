@@ -1,7 +1,9 @@
 package com.rohitrj.notesapp.ui.notes.addnotes
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,10 @@ import com.rohitrj.notesapp.internals.utlity.toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_note_fragment.*
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class AddNoteFragment : BaseFragment() {
 
@@ -35,6 +41,7 @@ class AddNoteFragment : BaseFragment() {
         viewModel = ViewModelProviders.of(this).get(AddNoteViewModel::class.java)
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity!!.materialToolbar.visibility = View.VISIBLE
@@ -54,7 +61,10 @@ class AddNoteFragment : BaseFragment() {
                 return@setOnClickListener
             }
 
-            val newNote = Note(title, note)
+            val sdf = SimpleDateFormat("dd/M/yyyy hh:mm:ss")
+            val currentDate = sdf.format(Date())
+
+            val newNote = Note(title, note, currentDate)
 
             //launching a coroutine
             launch {
