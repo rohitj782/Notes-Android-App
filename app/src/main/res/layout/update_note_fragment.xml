@@ -19,7 +19,7 @@
                 android:layout_margin="10dp"
                 android:id="@+id/editTextDisplayNote" android:layout_marginTop="16dp"
                 android:lineSpacingMultiplier="1.3" android:textSize="18sp" android:textStyle="italic"
-                />
+                android:scrollbars="vertical" android:background="@drawable/edittext_boundary" android:padding="10dp"/>
     </LinearLayout>
 
     <com.google.android.material.bottomappbar.BottomAppBar android:layout_width="match_parent"

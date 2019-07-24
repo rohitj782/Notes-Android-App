@@ -37,6 +37,7 @@ class SplashFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,7 +45,7 @@ class SplashFragment : BaseFragment() {
         activity!!.materialToolbar.visibility = View.GONE
 
         launch {
-            delay(1000)
+            delay(800)
             Navigation.findNavController(view).navigate(SplashFragmentDirections.nextAction())
         }
     }

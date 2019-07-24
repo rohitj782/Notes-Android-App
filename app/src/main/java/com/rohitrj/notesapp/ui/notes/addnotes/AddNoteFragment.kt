@@ -1,12 +1,16 @@
 package com.rohitrj.notesapp.ui.notes.addnotes
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 
 import com.rohitrj.notesapp.R
 import com.rohitrj.notesapp.data.db.NoteDatabase
@@ -33,6 +37,7 @@ class AddNoteFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         return inflater.inflate(R.layout.add_note_fragment, container, false)
     }
 
@@ -71,9 +76,25 @@ class AddNoteFragment : BaseFragment() {
                 NoteDatabase(context!!).getNoteDao().addNote(newNote)
                 context!!.toast("saved")
             }
+            view?.let { activity?.hideKeyboard(it) }
             activity!!.onBackPressed()
         }
 
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when(item.itemId){
+            android.R.id.home ->{
+                view?.let { activity?.hideKeyboard(it) }
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
+    }
+    fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
 
 }

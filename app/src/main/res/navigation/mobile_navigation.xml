@@ -8,7 +8,9 @@
               android:label="splash_fragment" tools:layout="@layout/splash_fragment">
         <action android:id="@+id/nextAction" app:destination="@+id/allNotesFragment"
                 app:popUpTo="@+id/splashFragment"
-                app:popUpToInclusive="true" app:launchSingleTop="true"/>
+                app:popUpToInclusive="true" app:launchSingleTop="true"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim" app:popExitAnim="@anim/nav_default_exit_anim"
+                app:enterAnim="@anim/nav_default_pop_enter_anim" app:exitAnim="@anim/nav_default_pop_exit_anim"/>
     </fragment>
     <fragment android:id="@+id/addNoteFragment"
               android:name="com.rohitrj.notesapp.ui.notes.addnotes.AddNoteFragment"
@@ -16,9 +18,13 @@
     <fragment android:id="@+id/allNotesFragment" android:name="com.rohitrj.notesapp.ui.notes.allnotes.AllNotesFragment"
               tools:layout="@layout/all_notes_fragment" android:label="My Notes">
         <action app:destination="@id/addNoteFragment"
-                app:launchSingleTop="true" android:id="@+id/addNote"/>
+                app:launchSingleTop="true" android:id="@+id/addNote"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:enterAnim="@anim/nav_default_pop_enter_anim"/>
         <action android:id="@+id/updateNote"
-                app:destination="@id/updateNoteFragment"/>
+                app:destination="@id/updateNoteFragment"
+                app:enterAnim="@anim/nav_default_pop_enter_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"/>
     </fragment>
     <fragment android:id="@+id/updateNoteFragment"
               android:name="com.rohitrj.notesapp.ui.notes.updatenotes.UpdateNoteFragment"
