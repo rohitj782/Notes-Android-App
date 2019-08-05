@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.activity_main.*
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import androidx.work.WorkManager
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
@@ -18,6 +19,7 @@ import com.rohitrj.notesapp.data.db.NoteDatabase
 import com.rohitrj.notesapp.internals.adapters.NoteAdapter
 import com.rohitrj.notesapp.internals.utlity.toast
 import com.rohitrj.notesapp.ui.basefragment.BaseFragment
+import com.rohitrj.notesapp.ui.notifications.MyNotificationManager
 import kotlinx.android.synthetic.main.all_notes_fragment.*
 import kotlinx.coroutines.launch
 
@@ -40,6 +42,8 @@ class AllNotesFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(AllNotesViewModel::class.java)
+
+        WorkManager.getInstance().enqueue(MyNotificationManager().oneTimeWorkReq)
 
     }
 
