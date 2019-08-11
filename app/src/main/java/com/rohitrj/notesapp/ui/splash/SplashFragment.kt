@@ -1,23 +1,20 @@
 package com.rohitrj.notesapp.ui.splash
 
-import android.content.Intent
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
+import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
-
 import com.rohitrj.notesapp.R
 import com.rohitrj.notesapp.ui.basefragment.BaseFragment
+import com.rohitrj.notesapp.ui.notifications.MyJobService
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.coroutines.*
-import java.lang.Runnable
 
 class SplashFragment : BaseFragment() {
 
@@ -37,6 +34,14 @@ class SplashFragment : BaseFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
+
+        val componentName = ComponentName(context!!,MyJobService::class.java)
+        val jobInfo = JobInfo.Builder(10, componentName)
+            .setPeriodic(12*60*60*1000)
+            .setPersisted(true)
+            .build()
+        val schedular = context!!.getSystemService(Context.JOB_SCHEDULER_SERVICE) as JobScheduler
+        schedular.schedule(jobInfo)
 
     }
 

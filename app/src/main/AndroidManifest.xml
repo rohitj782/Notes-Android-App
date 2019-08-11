@@ -3,6 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools" package="com.rohitrj.notesapp">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
 
     <application
             android:allowBackup="true"
@@ -22,6 +23,8 @@
         <meta-data
                 android:name="com.google.android.gms.ads.APPLICATION_ID"
                 android:value="@string/add_mob_id"/>
+        <service android:name=".ui.notifications.MyJobService"
+                 android:permission="android.permission.BIND_JOB_SERVICE"/>
     </application>
 
 </manifest>
