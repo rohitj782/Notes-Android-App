@@ -1,15 +1,16 @@
 package com.rohitrj.notesapp.data.entity
 
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-@Entity
+@Entity(tableName = "notes")
 data class Note(
-    val title: String,
-    val note: String,
-    val date: String
+    @ColumnInfo (name = "title") val title: String,
+    var note: String,
+    var date: String
 ): Serializable {
     @PrimaryKey(autoGenerate = true)
     var id = 0

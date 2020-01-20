@@ -1,5 +1,6 @@
 package com.rohitrj.notesapp.data.db
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.rohitrj.notesapp.data.entity.Note
 
@@ -9,8 +10,9 @@ interface NoteDao {
     @Insert
     suspend fun addNote(note: Note)
 
-    @Query("Select * from Note order by id desc")
-    suspend fun getAllNotes() : List < Note >
+    // A normal query
+    @Query("Select * from notes order by id desc")
+    fun getAllNotes(): LiveData <List <Note> >
 
     @Delete
     suspend fun deleteNote(note: Note)

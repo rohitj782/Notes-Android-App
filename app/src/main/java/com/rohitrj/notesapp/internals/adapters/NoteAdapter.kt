@@ -1,5 +1,6 @@
 package com.rohitrj.notesapp.internals.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +12,9 @@ import com.rohitrj.notesapp.data.entity.Note
 import com.rohitrj.notesapp.ui.notes.allnotes.AllNotesFragmentDirections
 import kotlinx.android.synthetic.main.note_display.view.*
 
-class NoteAdapter(noteList: List<Note>) : RecyclerView.Adapter<NoteAdapter.MyViewHolder>() {
+class NoteAdapter : RecyclerView.Adapter<NoteAdapter.MyViewHolder>() {
 
-    var list: List<Note> = noteList
+    private var list: List<Note> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.note_display,parent,false)
@@ -21,7 +22,7 @@ class NoteAdapter(noteList: List<Note>) : RecyclerView.Adapter<NoteAdapter.MyVie
     }
 
     override fun getItemCount(): Int {
-       return list.size
+        return list.size
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -39,6 +40,12 @@ class NoteAdapter(noteList: List<Note>) : RecyclerView.Adapter<NoteAdapter.MyVie
             view.textViewNote.text = note.note
             view.textViewTitle.text = note.title
             view.textViewDate.text = note.date
+
         }
     }
+    fun setNotes(notes:List<Note>){
+        list = notes
+        notifyDataSetChanged()
+    }
+
 }

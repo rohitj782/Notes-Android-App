@@ -1,4 +1,4 @@
-package com.rohitrj.notesapp.ui.basefragment
+package com.rohitrj.notesapp.internals.utlity.basefragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

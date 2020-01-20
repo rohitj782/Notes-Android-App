@@ -5,7 +5,6 @@ import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
@@ -15,21 +14,16 @@ import android.view.inputmethod.InputMethodManager
 import com.rohitrj.notesapp.R
 import com.rohitrj.notesapp.data.db.NoteDatabase
 import com.rohitrj.notesapp.data.entity.Note
-import com.rohitrj.notesapp.ui.basefragment.BaseFragment
+import com.rohitrj.notesapp.internals.utlity.basefragment.BaseFragment
+import com.rohitrj.notesapp.internals.utlity.hideKeyboard
 import com.rohitrj.notesapp.internals.utlity.toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.add_note_fragment.*
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class AddNoteFragment : BaseFragment() {
-
-    companion object {
-        fun newInstance() = AddNoteFragment()
-    }
 
     private lateinit var viewModel: AddNoteViewModel
 
@@ -71,12 +65,8 @@ class AddNoteFragment : BaseFragment() {
 
             val newNote = Note(title, note, currentDate)
 
-            //launching a coroutine
-            launch {
-                NoteDatabase(context!!).getNoteDao().addNote(newNote)
-                context!!.toast("saved")
-            }
-            view?.let { activity?.hideKeyboard(it) }
+            viewModel.insert(newNote)
+            view.let { activity?.hideKeyboard(it) }
             activity!!.onBackPressed()
         }
 
@@ -91,10 +81,4 @@ class AddNoteFragment : BaseFragment() {
 
         return super.onOptionsItemSelected(item)
     }
-    fun Context.hideKeyboard(view: View) {
-        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-    }
-
-
 }
